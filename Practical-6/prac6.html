@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <title>Practical Excercise 6</title>
+
+        <meta charset="UTF-8">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+        <link rel="stylesheet" href="prac6.css">
+
+        <!-- In this prac we'll be using Vue directly from CDN rather than via ES Module imports. You can use either method in your projects. -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <!-- Replace the above script tag with this one if you want to use Vue 3    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+        <script src="prac6.js" defer></script>
+
+
+    </head>
+
+    <body>
+        <!-- #app.dark-mode and 'dark-mode': dark_mode are confusing -->
+        <div id="app" :class="{ 'dark-mode': dark_mode }">
+
+            <header>
+                <h1>Wendy's Delicious Condiments (and Fruit)</h1>
+                <nav class="pure-menu pure-menu-horizontal">
+                    <ul id="topmenu" class="pure-menu-list">
+                        <li v-for="item in top_menu" :key="item.url" class="pure-menu-item">
+                            <a v-bind:href="item.url" class="pure-menu-link">{{ item.title }}</a>
+                        </li>
+                    </ul>
+                    <div class="pure-menu">
+                        <ul id="submenu" class="pure-menu-list">
+
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <div v-if="show_ad" class="pad" id="ad">
+                <button type="button" class="pure-button" style="float:right;" onclick="vueinst.show_ad = false;">close</button>
+                <!-- equals to   SPECIALS[i].url -->
+                <img v-bind:src="special.url" alt="" onclick="vueinst.special=SPECIALS[Math.floor((Math.random() * 4))];" />
+                <h3>{{ special.name }}</h3>
+                <p>{{ special.price }}</p>
+            </div>
+
+
+
+            <main v-else class="pure-g">
+
+                <div class="pad pure-u-2-3">
+                    <div id="items">
+                        <input type="text" class="pure-u-3-4" /><button type="button" class="pure-button pure-u-1-4">Search</button>
+                    </div>
+
+                    <div id="comments">
+                        <textarea rows="4" cols="60" class="pure-u-1" >Comments</textarea><button type="button" class="pure-button pure-u-1-4">Add comment</button>
+                    </div>
+                </div>
+
+                <aside class="pad pure-u-1-3">
+
+                    <h3>Salt or Pepper?</h3>
+                    <!-- TASK 1.1 -->
+                    <p id="sp">{{ choose }}</p>
+                    <button type="button" class="pure-button pure-u-1-4" onclick="vueinst.choose='Salt';">Salt</button>
+                    <button type="button" class="pure-button pure-u-1-4" onclick="vueinst.choose='Pepper!';">Pepper</button>
+
+                    <hr />
+
+                    <h3>Dark Mode:</h3>
+                    <div class="pure-button-group" role="group" aria-label="Nightmode">
+                        <!-- dark_mode: false, -->
+
+                        <!-- Dark Mode: OFF -> dark_mode = false -> dark_mode -->
+                        <button type="button" 
+                                v-bind:class = "['pure-button', {
+                                                'pure-button-active': !dark_mode }]"
+                                onclick="vueinst.dark_mode = false;">OFF
+                        </button>
+                        
+                        <!-- Dark Mode: ON -> dark_mode = true -> !dark_mode -->
+                        <button type="button"
+                                v-bind:class = "['pure-button', { 
+                                                'pure-button-active': dark_mode,
+                                                'pure-button-primary': dark_mode }]"
+                                onclick="vueinst.dark_mode = true;">ON
+                        </button>
+                    </div>
+
+                    <hr />
+
+                    <div id="stores">
+                        <div v-for="item in s_arr" class="store">
+                            <img :src="item.img" alt="A picture of the storefront" />
+                            <h3>{{ item.name }}</h3>
+                            <p>{{ item.address }}</p>
+                            <span> {{ item.counter }} people have been here</span>
+                            <br>
+                            <button v-on:click="item.counter += 1">I've been here</button>
+                        </div>
+                    </div>
+
+                </aside>
+
+
+
+            </main>
+
+
+            <footer><p>&copy; 2023 WDC</p></footer>
+
+        </div>
+
+
+    </body>
+
+</html>
+
