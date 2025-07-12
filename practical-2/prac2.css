@@ -1,0 +1,157 @@
+.blue-background {
+    background-color: rgb(220, 245, 245);
+    background-image: url("cross.png");
+    background-repeat: repeat;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+}
+
+* {
+    font-family: "Noto Serif", serif;
+}
+
+h2 {
+    text-align: left;
+}
+
+/* task2-9.html */
+.white-bg-box {
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 8px;
+    /* padding: 10px; */
+}
+
+.white-bg-box h1 {
+    padding: 20px;
+}
+
+.menu-bar {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    display: flex;
+    background-color: darkgrey;
+}
+
+.menu-bar li {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    font-family: "Raleway";
+    float: left;
+}
+
+.menu-bar li:hover {
+    color: darkgrey;
+    text-shadow: lightgrey;
+    background-color: white;
+}
+
+.roman-numeral-style {
+    list-style-type: lower-roman;
+}
+
+.square-style {
+    list-style-type: square;
+}
+
+
+
+/* task2-10.html */
+.width-500 {
+    width: 500px;
+}
+
+.white-darkslategrey {
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-bottom: 1px solid darkgrey;
+}
+
+.white-darkslategrey tr {
+    border-bottom: 1px solid darkgrey;
+}
+
+.white-darkslategrey-header {
+    background-color: darkslategrey;
+    color: white;
+    /* font-weight: normal; */
+}
+
+.black-F8F8F8 {
+    background-color: #f8f8f8;
+}
+
+.palegoldenrod {
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+.palegoldenrod th {
+    border: 2px solid black;
+    text-align: left;
+    background-color: palegoldenrod;
+    font-weight: bold;
+
+}
+
+.palegoldenrod td {
+    border: 1px solid grey;
+    text-align: left;
+}
+
+
+
+/* task2-11.html */
+.white-box {
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.header {
+    width: 600px;
+    margin: 10px auto 0 auto;
+    vertical-align: 50%;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    width: 600px;
+    margin: 10px auto 0 auto;
+}
+
+.floated-left {
+    margin-right: 5px;
+    height: 400px;
+    overflow: scroll;
+    padding: 10px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.floated-right {
+    margin-left: 5px;
+    width: auto;
+    height: 400px;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.red-box {
+    width: 1000px;
+    height: 100px;
+    border: 1px solid red;
+    position: relative;
+    left: 100px;
+    box-sizing: border-box;
+    top: 100px;
+}

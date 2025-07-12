@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../routes/index.js" defer></script>
+</head>
+<body>
+    <h1>My Prac 4 Express Server</h1>
+    <p id="lastViewed"></p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const timestampParagraph = document.getElementById('lastViewed');
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/last.txt', true);
+
+        xhr.onload = function() {
+            // request is successful
+            if (xhr.status >= 200 && xhr.status < 300) {
+            // Request was successful
+            const timestamp = xhr.responseText;
+            timestampParagraph.textContent = `This page was last viewed\n${timestamp}`;
+            } else {
+            // Request failed
+            timestampParagraph.textContent = 'Failed to load last viewed timestamp.';
+            }
+        };
+
+        // Send the AJAX request
+        xhr.send();
+        });
+    </script>
+</body>
+</html>

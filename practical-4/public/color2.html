@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Display</title>
+</head>
+<body>
+    <h1 id="colorHeading">Color Heading</h1>
+    <button type="button" id="colorButton">Change Color</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const colorHeading = document.getElementById('colorHeading');
+            const colorButton = document.getElementById('colorButton');
+
+            function fetchColor() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/color.txt', true);
+
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        const color = xhr.responseText;
+                        colorHeading.textContent = color;
+                        colorHeading.style.color = color;
+                    } else {
+                        console.error('Failed to load color.');
+                        colorHeading.textContent = 'Error loading color.';
+                    }
+                };
+
+                xhr.onerror = function() {
+                    console.error('There was a network error.');
+                    colorHeading.textContent = 'Network error.';
+                };
+
+                xhr.send();
+            }
+
+            // Fetch color on page load
+            fetchColor();
+
+            // Fetch color on button click
+            colorButton.addEventListener('click', fetchColor);
+        });
+    </script>
+</body>
+</html>
